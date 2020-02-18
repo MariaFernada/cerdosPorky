@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<title th:text="${titulo}"></title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous">
+</head>
+
+<body>
+	<header>
+		<div class="row">
+			<img src="/imagen/imagen.png" class="img-fluid "
+				alt="Responsive image"></img>
+			<div class="col-12">
+
+				<nav class="navbar navbar-expand-lg navbar-light border "
+					style="background-color: #e3f2fd;" alt="Responsive image">
+					<ul class="navbar-nav mr-auto">
+
+						<li class="nav-item"><a class="nav-link"
+							href="listarPrestamo">Prestamos</a></li>
+						<li class="nav-item active"><a class="nav-link" href="#">Persona</a>
+						</li>
+						<li class="nav-item "><a class="nav-link" href="listarLibro">Libro
+								<span class="sr-only">(current)</span>
+						</a></li>
+
+
+
+					</ul>
+				</nav>
+
+
+			</div>
+		</div>
+	</header>
+	<div class="container">
+
+		<h1 class="text-center my-3">Usuarios</h1>
+		
+		<hr class="border-secondary">
+		<div class='row mx-4'>
+			<h2 class="my-2">Crear Nueva Persona</h2>
+
+			<form class="form-inline" th:action="@{/listarPersona}" 
+			th:object="${persona}" method="post">
+			
+				<div class="form-group">					
+						<input type="text" th:field="*{nombres}" placeholder="Ingresar Nombres" 
+						class="form-control ml-5" required/>
+						<input type="text" th:field="*{apellidos}" placeholder="Ingresar Apellidos" 
+						class="form-control ml-5" required/>
+					
+						<input type="number" th:field="*{documento}"
+							placeholder="Ingresar Documento" class="form-control m-1" required/>
+					
+						<input type="number" th:field="*{telefono}" placeholder="Telefono"
+							class="form-control m-1" required/>
+					
+
+					<input type="hidden" th:field="*{codigo}" /> 
+					<button type="submit"
+						 class="btn btn-success ml-3" >
+						 <i class ="fas fa-plus "></i> Guardar
+						 </button>
+				</div>
+			</form>
+
+			<form class="form-inline" method='post' name='form1'></form>
+		</div>
+
+		<hr class="border-secondary">
+
+		<div class='row mx-2 my-2'>
+			<div class="col-12 my-2 ">
+				<h2>Información de la Persona</h2>
+
+				<table id="infoTable" class="table table-bordered mt-3 text-center">
+					<thead style ="background-color: #bccad6;">
+						<tr>
+							<th>Codigo</th>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Documento</th>
+							<th>Telefono</th>
+							<th></th>
+
+						</tr>
+					<tbody>
+						<tr th:each="persona: ${personas}">
+							<td th:text="${persona.codigo}"></td>
+							<td th:text="${persona.nombres}"></td>
+							<td th:text="${persona.apellidos}"></td>
+							<td th:text="${persona.documento}"></td>
+							<td th:text="${persona.telefono}"></td>
+							<td><a class="btn btn-primary "
+								th:href="@{/listarPersona/} + ${persona.codigo}">
+								<i class="fas fa-edit"></i></a>
+							<a class="btn btn-danger "
+								th:href="@{/eliminarPersona/} + ${persona.codigo}"
+								onclick="return confirm('Desea Eliminar Persona?');">
+								<i class="fas fa-trash-alt"></i>
+								</a></td>
+						</tr>
+					</tbody>
+				</table>
+
+
+
+			</div>
+		</div>
+	</div>
+	<br>
+</body>
+
+</html>

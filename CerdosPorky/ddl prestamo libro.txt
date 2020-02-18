@@ -1,0 +1,85 @@
+
+create table CERDO
+(
+   ID_CERDO             int not null,
+   PESO                 numeric(8,0),
+   RAZA                 char(20),
+   EDAD                 int,
+   primary key (ID_CERDO)
+);
+
+create table INSUMO
+(
+   ID_INSUMO            int not null,
+   ID_PROVEEDOR         int,
+   ID_CERDO             int,
+   NOMBRE_INSUMO        char(30),
+   CANTIDAD_STOCK       int,
+   VALOR                float(8,2),
+   primary key (ID_INSUMO)
+);
+
+create table PERSONA
+(
+   ID_PERSONAS          int not null,
+   ID_TIPO_PERSONA      int,
+   NOMBRES              char(40),
+   APELLIDOS            char(40),
+   DOC_IDENTIFICACION   char(15),
+   TELEFONO             char(10),
+   DIRECCION            char(100),
+   primary key (ID_PERSONAS)
+);
+
+create table PROVEEDOR
+(
+   ID_PROVEEDOR         int not null,
+   NOMBRE_PROVEEDOR     char(30),
+   NIT                  char(30),
+   TELEFONO             char(10),
+   primary key (ID_PROVEEDOR)
+);
+
+create table TIPO_INSUMO
+(
+   ID_TIPO_INSUMO       int not null,
+   ID_INSUMO            int,
+   NOMBRE_TIPO_INSUMO   char(30),
+   primary key (ID_TIPO_INSUMO)
+);
+
+create table TIPO_PERSONA
+(
+   ID_TIPO_PERSONA      int not null,
+   NOMBRE_TIPO_PERSONA  char(30),
+   primary key (ID_TIPO_PERSONA)
+);
+
+create table VENTA
+(
+   ID_VENTA             int not null,
+   ID_CERDO             int,
+   ID_PERSONAS          int,
+   FECHA_VENTA          date,
+   VALOR_TOTAL          float(8,2),
+   primary key (ID_VENTA)
+);
+
+alter table INSUMO add constraint FK_RELATIONSHIP_4 foreign key (ID_PROVEEDOR)
+      references PROVEEDOR (ID_PROVEEDOR) on delete restrict on update restrict;
+
+alter table INSUMO add constraint FK_RELATIONSHIP_6 foreign key (ID_CERDO)
+      references CERDO (ID_CERDO) on delete restrict on update restrict;
+
+alter table PERSONA add constraint FK_RELATIONSHIP_5 foreign key (ID_TIPO_PERSONA)
+      references TIPO_PERSONA (ID_TIPO_PERSONA) on delete restrict on update restrict;
+
+alter table TIPO_INSUMO add constraint FK_RELATIONSHIP_3 foreign key (ID_INSUMO)
+      references INSUMO (ID_INSUMO) on delete restrict on update restrict;
+
+alter table VENTA add constraint FK_RELATIONSHIP_1 foreign key (ID_PERSONAS)
+      references PERSONA (ID_PERSONAS) on delete restrict on update restrict;
+
+alter table VENTA add constraint FK_RELATIONSHIP_2 foreign key (ID_CERDO)
+      references CERDO (ID_CERDO) on delete restrict on update restrict;
+
