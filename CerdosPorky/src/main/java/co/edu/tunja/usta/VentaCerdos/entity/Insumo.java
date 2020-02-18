@@ -61,56 +61,30 @@ public class Insumo implements Serializable {
 	public void setId_insumo(Long id_insumo) {
 		this.id_insumo = id_insumo;
 	}
-
+	
+	public void setId_proveedor(Long id_proveedor) {
+		this.id_proveedor = id_proveedor;
+	}
+	
 	public Long getId_proveedor() {
 		return id_proveedor;		
 	}
 	
+	public void setCantidadStock(Long cantidadStock) {
+		this.cantidad_stock = cantidadStock;
+	}
 	
-	public void setId_cerdo(Long id_cerdo) {
-		this.id_cerdo = id_cerdo;
+	public Long getCantidadStock() {
+		return cantidad_stock;		
 	}
-
-	public Long getId_cerdo() {
-		return id_cerdo;		
-	}
-	public void setId_proveedor(Long id_proveedor) {
-		this.id_proveedor = id_proveedor;
-	}
-
-	public String getNombres() {
-		return nombres;
-	}
-
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
-	}
-
-	public String getApellidos() {
-		return apellidos;
-	}
-
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
 	
+	public void setValor(Long valor) {
+		this.valor = valor;
+	}
+	
+	public Long getValor() {
+		return valor;		
+	}
 				
 
 }
