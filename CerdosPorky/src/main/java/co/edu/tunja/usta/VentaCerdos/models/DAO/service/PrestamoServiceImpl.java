@@ -1,3 +1,5 @@
+
+
 package co.edu.tunja.usta.VentaCerdos.models.DAO.service;
 
 import java.util.List;
@@ -6,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import Cerdos.entity.Prestamo;
-import Cerdos.models.DAO.IPrestamo;
+import co.edu.tunja.usta.VentaCerdos.entity.*;
 /** 
  * @Desc esta clase implementa el crud de la interface ILibrosService .
  * @CreateAt 23/11/2019
@@ -17,7 +18,7 @@ import Cerdos.models.DAO.IPrestamo;
  *         Ericka Julieth Sora         
 **/
 @Service
-public class PrestamoServiceImpl implements IPrestamoService{
+public class PrestamoServiceImpl implements IVentaService{
  
 	/** 
 	    *  @Autowired es buscar un objeto manejado (beans) que implementen determinada interfaz para hacer 

@@ -2,8 +2,9 @@ package co.edu.tunja.usta.VentaCerdos.models.DAO;
 
 import org.springframework.data.repository.CrudRepository;
 
-import Cerdos.entity.Prestamo;
+import co.edu.tunja.usta.VentaCerdos.entity.Cerdo;;
 
-public interface IPrestamo extends CrudRepository<Venta, Long>{
+public interface ICerdo extends CrudRepository<Cerdo, Long>{
+	
 
 }

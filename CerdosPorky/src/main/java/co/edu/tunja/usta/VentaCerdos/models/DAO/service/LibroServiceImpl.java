@@ -18,7 +18,7 @@ import Cerdos.models.DAO.ILibro;
 **/
 
 @Service
-public class LibroServiceImpl  implements ILibroService{
+public class LibroServiceImpl  implements ICerdoService{
 
 	/** 
     *  @Autowired es buscar un objeto manejado (beans) que implementen determinada interfaz para hacer 
@@ -26,7 +26,7 @@ public class LibroServiceImpl  implements ILibroService{
     *  se necesite la funcionalidad de determinada clase     
 	**/
 	@Autowired
-	private ILibro libroDAO;
+	private ICerdo libroDAO;
 	
 	/** 
 	 * @Desc el metodo findAll trae una lista de todos los libros, es propio de la interfaz

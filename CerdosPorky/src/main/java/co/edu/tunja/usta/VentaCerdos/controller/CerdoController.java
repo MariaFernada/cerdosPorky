@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import Cerdos.entity.Libro;
-import Cerdos.models.DAO.service.ILibroService;
+
+import co.edu.tunja.usta.VentaCerdos.entity.Cerdo;
+import co.edu.tunja.usta.VentaCerdos.models.DAO.service.ICerdoService;
 
 /** 
  * @Desc Esta es una clase Controller que permite gestionar los datos que se enviaran 
@@ -23,10 +24,10 @@ import Cerdos.models.DAO.service.ILibroService;
 **/
 
 @Controller
-public class LibroController {
+public class CerdoController {
 	
 	@Autowired
-	private ILibroService libroService;
+	private ICerdoService cerdoService;
 	/** 
 	 * @Desc Este metodo permite listar todos los libros que se encuentren en la base de datos con 
 	 * sus respectivos atributos.
@@ -36,13 +37,13 @@ public class LibroController {
 	 * - La clase Model permite enviar datos de las clases java a las vistas html
 	**/
 	
-	@GetMapping({"/listarLibro","","/"})
+	@GetMapping({"/listarCerdo","","/"})
 	public String listar(Model model) {
-		model.addAttribute("titulo", "Listado de Libros");
-		model.addAttribute("libros", libroService.findAll());
+		model.addAttribute("cerdo", "Listado de Libros");
+		model.addAttribute("cerdo", cerdoService.findAll());
 		//crear libro
-		Cerdo libro =new Cerdo();
-		model.addAttribute("libro", libro);
+		Cerdo cerdo =new Cerdo();
+		model.addAttribute("cerdo", cerdo);
 		return "listarLibro";
 	}
 	
@@ -55,17 +56,17 @@ public class LibroController {
 	 * estar vinculado a una variable de plantilla URI.
 	**/
 	
-	@GetMapping("/listarLibro/{id}")
-	public String editar(@PathVariable(value = "id") Long id, Model model) {
-		Cerdo libro = null;
+	@GetMapping("/listarCerdo/{id_cerdo}")
+	public String editar(@PathVariable(value = "id_cerdo") Long id, Model model) {
+		Cerdo cerdo = null;
 		if(id>0) {
-			libro=libroService.findOne(id);
+			cerdo=cerdoService.findOne(id);
 		}else {
-			return "redirect:/listarLibro";
+			return "redirect:/listarCerdo";
 		}
-		model.addAttribute("libro", libro);
-		model.addAttribute("titulo", "Editar Libro");
-		return "listarLibro";
+		model.addAttribute("cerdo", cerdo);
+		model.addAttribute("cerdo", "Editar cerdo");
+		return "listarCerdo";
 	}
 	
 	/** 
@@ -82,7 +83,7 @@ public class LibroController {
 	@RequestMapping("/eliminarLibro/{id}")
 	public String eliminar(@PathVariable(value = "id" )Long id) {
 		if(id>0) {
-			libroService.delete(libroService.findOne(id));
+			cerdoService.delete(cerdoService.findOne(id));
 		}
 		return "redirect:/listarLibro";
 	}
@@ -96,7 +97,7 @@ public class LibroController {
 	
 	@PostMapping("/listarLibro")
 	public String gurdar(Cerdo libro) {
-		libroService.Save(libro);
+		cerdoService.Save(libro);
 		return "redirect:/listarLibro";
 		
 	}

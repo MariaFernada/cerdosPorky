@@ -12,7 +12,7 @@ import Cerdos.entity.Prestamo;
  * @author Laura Fernanda Castillo       
 **/
 
-public interface IPrestamoService {
+public interface IInsumoService {
 	
 	public List<Venta> findAll();
 	public void Save(Venta prestamo);

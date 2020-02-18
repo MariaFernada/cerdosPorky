@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import Cerdos.entity.Persona;
-import Cerdos.models.DAO.IPersona;
-
+import co.edu.tunja.usta.VentaCerdos.entity.Persona;
+import co.edu.tunja.usta.VentaCerdos.models.DAO.IPersona;
 /** 
  * @Desc esta clase implementa el crud de la interface ILibrosService .
  * @CreateAt 23/11/2019

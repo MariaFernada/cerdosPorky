@@ -17,12 +17,11 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 /** 
- * @Desc esta entidad hace referencia a la tabla de la base de datos llamada prestamo.
- * @CreateAt 23/11/2019
+ * @Desc esta entidad hace referencia a la tabla de la base de datos llamada venta.
+ * @CreateAt17/02/2020
  * @version 1.0
- * @author Laura Fernanda Castillo
- *         Maria Fernanda Molina
- *         Ericka Julieth Sora         
+ * @author Maria Fernanda Molina
+ *             
 **/
 
 @Entity

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import Cerdos.entity.Prestamo;
-import Cerdos.models.DAO.service.IPrestamoService;
+import co.edu.tunja.usta.VentaCerdos.entity.*;
+import co.edu.tunja.usta.VentaCerdos.models.DAO.service.*;
 /** 
  * @Desc Esta es una clase Controller que permite gestionar los datos que se enviaran 
  * 			desde la Interfaz del Servicio a la vista html
@@ -22,7 +22,7 @@ import Cerdos.models.DAO.service.IPrestamoService;
 **/
 
 @Controller
-public class PrestamoController {
+public class VentaController {
 
 	/** 
 	 * @Desc Este metodo permite listar todos los prestamos que se encuentren en la base de datos con 
@@ -32,7 +32,7 @@ public class PrestamoController {
 	**/
 	
 	@Autowired
-	private IPrestamoService prestamoService;
+	private IVentaService prestamoService;
 	
 	@GetMapping({"/listarPrestamo"})
 	public String listar(Model model) {

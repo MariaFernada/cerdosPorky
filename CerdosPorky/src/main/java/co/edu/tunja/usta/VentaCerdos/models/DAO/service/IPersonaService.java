@@ -2,7 +2,7 @@ package co.edu.tunja.usta.VentaCerdos.models.DAO.service;
 
 import java.util.List;
 
-import Cerdos.entity.Persona;
+import co.edu.tunja.usta.VentaCerdos.entity.Persona;
 
 /** 
  * @Desc esta es la interfaz del servicio de persona la cual es una forma de especificar 

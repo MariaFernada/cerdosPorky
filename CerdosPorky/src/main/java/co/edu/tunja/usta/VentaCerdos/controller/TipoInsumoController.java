@@ -22,7 +22,7 @@ import co.edu.tunja.usta.VentaCerdos.models.DAO.service.IPersonaService;;
 **/
 
 @Controller
-public class PersonaController {
+public class TipoInsumoController {
 	
 @Autowired
 private IPersonaService personaService;
