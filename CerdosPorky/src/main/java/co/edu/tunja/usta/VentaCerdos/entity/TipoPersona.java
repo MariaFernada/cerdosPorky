@@ -12,14 +12,13 @@ import javax.validation.constraints.NotBlank;
 
 /** 
  * @Desc esta entidad hace referencia a la tabla de la base de datos llamada persona.
- * @CreateAt 23/11/2019
+ * @CreateAt 17/02/2020
  * @version 1.0
- * @author Laura Fernanda Castillo
+ * @author Johan Bernal
  *         Maria Fernanda Molina
- *         Ericka Julieth Sora    
+ *           
  *         
- *            ID_TIPO_PERSONA      int not null,
-   NOMBRE_TIPO_PERSONA  char(30),  
+ *             
 **/
 
 @Entity
