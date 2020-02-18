@@ -51,7 +51,7 @@ public String listar(Model model) {
 **/
 
 @GetMapping("/listarPersona/{id_persona}")
-public String editar(@PathVariable(value = "codigo") Long id_persona, Model model) {
+public String editar(@PathVariable(value = "id_persona") Long id_persona, Model model) {
 	Persona persona = null;
 	if(id_persona>0) {
 		persona=personaService.findOne(id_persona);
@@ -76,9 +76,9 @@ public String editar(@PathVariable(value = "codigo") Long id_persona, Model mode
 **/
 
 @RequestMapping("/eliminarPersona/{codigo}")
-public String eliminar(@PathVariable(value = "codigo" )Long codigo) {
-	if(codigo>0) {
-		personaService.delete(personaService.findOne(codigo));
+public String eliminar(@PathVariable(value = "id_persona" )Long id_persona) {
+	if(id_persona>0) {
+		personaService.delete(personaService.findOne(id_persona));
 	}
 	return "redirect:/listarPersona";
 }

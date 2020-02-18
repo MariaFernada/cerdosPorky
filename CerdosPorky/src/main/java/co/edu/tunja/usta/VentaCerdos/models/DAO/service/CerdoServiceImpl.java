@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import Cerdos.entity.Libro;
-import Cerdos.models.DAO.ILibro;
+import co.edu.tunja.usta.VentaCerdos.entity.*;
+import co.edu.tunja.usta.VentaCerdos.models.DAO.*;
 /** 
  * @Desc esta clase implementa el crud de la interface ILibrosService .
  * @CreateAt 23/11/2019
@@ -18,7 +18,7 @@ import Cerdos.models.DAO.ILibro;
 **/
 
 @Service
-public class LibroServiceImpl  implements ICerdoService{
+public class CerdoServiceImpl  implements ICerdoService{
 
 	/** 
     *  @Autowired es buscar un objeto manejado (beans) que implementen determinada interfaz para hacer 

@@ -16,7 +16,7 @@ public interface ICerdoService {
 
 	public List<Cerdo> findAll();
 	public void Save(Cerdo cerdo);
-	public Cerdo findOne(Long id);
+	public Cerdo findOne(Long id_cerdo);
 	public void delete(Cerdo cerdo);
 	
 }

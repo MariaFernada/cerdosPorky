@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.edu.tunja.usta.VentaCerdos.entity.Persona;
-import co.edu.tunja.usta.VentaCerdos.models.DAO.service.IPersonaService;;
+import co.edu.tunja.usta.VentaCerdos.entity.TipoPersona;
+import co.edu.tunja.usta.VentaCerdos.models.DAO.service.ITipoPersonaService;;
 /** 
  * @Desc Esta es una clase Controller que permite gestionar los datos que se enviaran 
  * 			desde la Interfaz del Servicio a la vista html
@@ -25,7 +26,7 @@ import co.edu.tunja.usta.VentaCerdos.models.DAO.service.IPersonaService;;
 public class TipoPersonaController {
 	
 @Autowired
-private IPersonaService personaService;
+private ITipoPersonaService tipoPersonaService;
 
 /** 
  * @Desc Este metodo permite listar todos los usuarios que se encuentren en la base de datos.
@@ -35,10 +36,10 @@ private IPersonaService personaService;
 @GetMapping("/listarPersona")
 public String listar(Model model) {
 	model.addAttribute("titulo", "Listado de Personas");
-	model.addAttribute("personas", personaService.findAll());
+	model.addAttribute("personas", tipoPersonaService.findAll());
 	//crear persona
-	Persona persona = new Persona();
-	model.addAttribute("persona", persona);
+	TipoPersona tipoPersona = new TipoPersona();
+	model.addAttribute("tipoPersona", tipoPersona);
 	return "listarPersona";
 	}
 /** 
@@ -50,15 +51,15 @@ public String listar(Model model) {
  * estar vinculado a una variable de plantilla URI.
 **/
 
-@GetMapping("/listarPersona/{id_persona}")
-public String editar(@PathVariable(value = "codigo") Long id_persona, Model model) {
-	Persona persona = null;
-	if(id_persona>0) {
-		persona=personaService.findOne(id_persona);
+@GetMapping("/listarPersona/{id_tipo_persona}")
+public String editar(@PathVariable(value = "id_tipo_personao") Long id_tipo_persona, Model model) {
+	TipoPersona tipoPersona = null;
+	if(id_tipo_persona>0) {
+		tipoPersona=tipoPersonaService.findOne(id_tipo_persona);
 	}else {
 		return "redirect:/listarPersona";
 	}
-	model.addAttribute("persona", persona);
+	model.addAttribute("tipoPersona", tipoPersona);
 	model.addAttribute("titulo", "Editar Persona");
 	return "listarPersona";
 	
@@ -75,12 +76,12 @@ public String editar(@PathVariable(value = "codigo") Long id_persona, Model mode
  * anotación se utiliza para asignar solicitudes web a clases de manejador y / o métodos de manejador específicos.
 **/
 
-@RequestMapping("/eliminarPersona/{codigo}")
-public String eliminar(@PathVariable(value = "codigo" )Long codigo) {
-	if(codigo>0) {
-		personaService.delete(personaService.findOne(codigo));
+@RequestMapping("/eliminarPersona/{id_tipo_persona}")
+public String eliminar(@PathVariable(value = "id_tipo_persona" )Long id_tipo_persona) {
+	if(id_tipo_persona>0) {
+		tipoPersonaService.delete(tipoPersonaService.findOne(id_tipo_persona));
 	}
-	return "redirect:/listarPersona";
+	return "redirect:/listarTipoPersona";
 }
 
 /** 
@@ -89,8 +90,8 @@ public String eliminar(@PathVariable(value = "codigo" )Long codigo) {
  * @PostMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.POST).
  **/
 @PostMapping("/listarPersona")
-public String gurdar(Persona persona) {
-	personaService.Save(persona);
+public String gurdar(TipoPersona tipoPersona) {
+	tipoPersonaService.Save(tipoPersona);
 	return "redirect:/listarPersona";
 	
 }

@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import co.edu.tunja.usta.VentaCerdos.entity.Persona;
-import co.edu.tunja.usta.VentaCerdos.models.DAO.service.IPersonaService;;
+import co.edu.tunja.usta.VentaCerdos.entity.Insumo;
+import co.edu.tunja.usta.VentaCerdos.models.DAO.service.IInsumoService;
+
+
 /** 
  * @Desc Esta es una clase Controller que permite gestionar los datos que se enviaran 
  * 			desde la Interfaz del Servicio a la vista html
@@ -25,24 +27,24 @@ import co.edu.tunja.usta.VentaCerdos.models.DAO.service.IPersonaService;;
 public class InsumoController {
 	
 @Autowired
-private IPersonaService personaService;
+private IInsumoService insumoService;
 
 /** 
  * @Desc Este metodo permite listar todos los usuarios que se encuentren en la base de datos.
  * @param model
  * @GetMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.GET).
 **/
-@GetMapping("/listarPersona")
+@GetMapping("/listarInsumo")
 public String listar(Model model) {
-	model.addAttribute("titulo", "Listado de Personas");
-	model.addAttribute("personas", personaService.findAll());
-	//crear persona
-	Persona persona = new Persona();
-	model.addAttribute("persona", persona);
-	return "listarPersona";
+	model.addAttribute("Nombre", "Listado de Insumos");
+	model.addAttribute("insumos", insumoService.findAll());
+	//crear insumo
+	Insumo insumo = new Insumo();
+	model.addAttribute("insumo", insumo);
+	return "listarinsumo";
 	}
 /** 
- * @Desc Este metodo permite editar los datos de una persona que se encuentra registrada
+ * @Desc Este metodo permite editar los datos de una Insumo que se encuentra registrada
  *  en la base de datos
  * @param model, codigo
  * @GetMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.GET).
@@ -50,22 +52,22 @@ public String listar(Model model) {
  * estar vinculado a una variable de plantilla URI.
 **/
 
-@GetMapping("/listarPersona/{id_persona}")
-public String editar(@PathVariable(value = "codigo") Long id_persona, Model model) {
-	Persona persona = null;
-	if(id_persona>0) {
-		persona=personaService.findOne(id_persona);
+@GetMapping("/listarInsumo/{id_insumo}")
+public String editar(@PathVariable(value = "id_insumo") Long id_insumo, Model model) {
+	Insumo insumo = null;
+	if(id_insumo>0) {
+		insumo=insumoService.findOne(id_insumo);
 	}else {
-		return "redirect:/listarPersona";
+		return "redirect:/listarInsumo";
 	}
-	model.addAttribute("persona", persona);
-	model.addAttribute("titulo", "Editar Persona");
-	return "listarPersona";
+	model.addAttribute("insumo", insumo);
+	model.addAttribute("titulo", "Editar insumo");
+	return "listarInsumo";
 	
 }
 
 /** 
- * @Desc Este metodo permite eliminar a una persona que se encuentre en la base de datos
+ * @Desc Este metodo permite eliminar a una Insumo que se encuentre en la base de datos
  * por medio del codigo
  * @param id
  * @GetMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.GET).
@@ -75,23 +77,23 @@ public String editar(@PathVariable(value = "codigo") Long id_persona, Model mode
  * anotación se utiliza para asignar solicitudes web a clases de manejador y / o métodos de manejador específicos.
 **/
 
-@RequestMapping("/eliminarPersona/{codigo}")
-public String eliminar(@PathVariable(value = "codigo" )Long codigo) {
-	if(codigo>0) {
-		personaService.delete(personaService.findOne(codigo));
+@RequestMapping("/eliminarInsumo/{id_insumo}")
+public String eliminar(@PathVariable(value = "codigo" )Long id_insumo) {
+	if(id_insumo>0) {
+		insumoService.delete(insumoService.findOne(id_insumo));
 	}
-	return "redirect:/listarPersona";
+	return "redirect:/listarInsumo";
 }
 
 /** 
- * @Desc Este metodo permite guardar todos las personas que se crean, y se guardan en la base de datos
- * @param persona
+ * @Desc Este metodo permite guardar todos las Insumos que se crean, y se guardan en la base de datos
+ * @param Insumo
  * @PostMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.POST).
  **/
-@PostMapping("/listarPersona")
-public String gurdar(Persona persona) {
-	personaService.Save(persona);
-	return "redirect:/listarPersona";
+@PostMapping("/listarInsumo")
+public String gurdar(Insumo insumo) {
+	insumoService.Save(insumo);
+	return "redirect:/listarInsumo";
 	
 }
 }

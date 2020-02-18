@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.edu.tunja.usta.VentaCerdos.entity.*;
 import co.edu.tunja.usta.VentaCerdos.models.DAO.service.*;
+
 /** 
  * @Desc Esta es una clase Controller que permite gestionar los datos que se enviaran 
  * 			desde la Interfaz del Servicio a la vista html
@@ -25,47 +26,47 @@ import co.edu.tunja.usta.VentaCerdos.models.DAO.service.*;
 public class VentaController {
 
 	/** 
-	 * @Desc Este metodo permite listar todos los prestamos que se encuentren en la base de datos con 
+	 * @Desc Este metodo permite listar todos los ventas que se encuentren en la base de datos con 
 	 * sus respectivos atributos.
 	 * @param model
 	 * @GetMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.GET).
 	**/
 	
 	@Autowired
-	private IVentaService prestamoService;
+	private IVentaService ventaService;
 	
-	@GetMapping({"/listarPrestamo"})
+	@GetMapping({"/listarVenta"})
 	public String listar(Model model) {
-		model.addAttribute("titulo", "Listado de Prestamos");
-		model.addAttribute("prestamos", prestamoService.findAll());
-		//crear prestamo
-		Venta prestamo =new Venta();
-		model.addAttribute("prestamo", prestamo);
-		return "listarPrestamo";
+		model.addAttribute("titulo", "Listado de ventas");
+		model.addAttribute("ventas", ventaService.findAll());
+		//crear venta
+		Venta venta =new Venta();
+		model.addAttribute("venta", venta);
+		return "listarVenta";
 	}
 	
 	/** 
-	 * @Desc Este metodo permite editar un prestamo que se encuentre en la base de datos, 
+	 * @Desc Este metodo permite editar un venta que se encuentre en la base de datos, 
 	 * este es llamado por su id.
 	 * @param model, id
 	 * @GetMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.GET).
 	 * @PathVariable es una anotación Spring que indica que un parámetro de método debe 
 	 * estar vinculado a una variable de plantilla URI.
 	**/
-	@GetMapping("/listarPrestamo/{id}")
-	public String editar(@PathVariable(value = "id") Long id, Model model) {
-		Venta prestamo = null;
-		if(id>0) {
-			prestamo=prestamoService.findOne(id);
+	@GetMapping("/listarventa/{id_venta}")
+	public String editar(@PathVariable(value = "id_venta") Long id_venta, Model model) {
+		Venta venta = null;
+		if(id_venta>0) {
+			venta=ventaService.findOne(id_venta);
 		}else {
-			return "redirect:/listarPrestamo";
+			return "redirect:/listarventa";
 		}
-		model.addAttribute("prestamo", prestamo);
-		model.addAttribute("titulo", "Editar prestamo");
-		return "listarPrestamo";
+		model.addAttribute("venta", venta);
+		model.addAttribute("titulo", "Editar venta");
+		return "listarventa";
 	}
 	/** 
-	 * @Desc Este metodo permite eliminar un prestamo que se encuentre en la base de datos
+	 * @Desc Este metodo permite eliminar un venta que se encuentre en la base de datos
 	 * por medio del id
 	 * @param id
 	 * @GetMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.GET).
@@ -75,26 +76,26 @@ public class VentaController {
 	 * anotación se utiliza para asignar solicitudes web a clases de manejador y / o métodos de manejador específicos.
 	**/
 	
-	@RequestMapping("/eliminarPrestamo/{id}")
-	public String eliminar(@PathVariable(value = "id" )Long id) {
-		if(id>0) {
-			prestamoService.delete(prestamoService.findOne(id));
+	@RequestMapping("/eliminarventa/{id_ventad}")
+	public String eliminar(@PathVariable(value = "id_venta" )Long id_venta) {
+		if(id_venta>0) {
+			ventaService.delete(ventaService.findOne(id_venta));
 		}
-		return "redirect:/listarPrestamo";
+		return "redirect:/listarventa";
 	}
 	
 	/** 
 	 * @Desc Este metodo permite guardar todos los prestao que se crean, y se guardan en la base de datos
-	 * @param prestamo
+	 * @param venta
 	 * @PostMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.POST).
 	 **/
 	
-	@PostMapping("/listarPrestamo")
-	public String gurdar(Venta prestamo) {
-		System.out.print(prestamo);
-		prestamoService.Save(prestamo);
+	@PostMapping("/listarVenta")
+	public String gurdar(Venta venta) {
+		System.out.print(venta);
+		ventaService.Save(venta);
 		
-		return "redirect:/listarPrestamo";
+		return "redirect:/listarventa";
 		
 	}
 }

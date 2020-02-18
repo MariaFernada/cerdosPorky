@@ -2,7 +2,7 @@ package co.edu.tunja.usta.VentaCerdos.models.DAO.service;
 
 import java.util.List;
 
-import Cerdos.entity.Prestamo;
+import co.edu.tunja.usta.VentaCerdos.entity.*;
 
 /** 
  * @Desc esta es la interfaz del servicio del libro la cual es una forma de especificar 
@@ -14,10 +14,10 @@ import Cerdos.entity.Prestamo;
 
 public interface ITipoInsumoService {
 	
-	public List<Venta> findAll();
-	public void Save(Venta prestamo);
-	public Venta findOne(Long id);
-	public void delete(Venta id);
+	public List<TipoInsumo> findAll();
+	public void Save(TipoInsumo tipoInsumo);
+	public TipoInsumo findOne(Long id);
+	public void delete(TipoInsumo id);
 	
 
 }

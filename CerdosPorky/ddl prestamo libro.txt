@@ -71,7 +71,7 @@ alter table INSUMO add constraint FK_RELATIONSHIP_4 foreign key (ID_PROVEEDOR)
 alter table INSUMO add constraint FK_RELATIONSHIP_6 foreign key (ID_CERDO)
       references CERDO (ID_CERDO) on delete restrict on update restrict;
 
-alter table PERSONA add constraint FK_RELATIONSHIP_5 foreign key (ID_TIPO_PERSONA)
+alter table PERSONA add constraint FK_RELATIONSHIP_5 foreign key (ID_TIPOPERSONA)
       references TIPO_PERSONA (ID_TIPO_PERSONA) on delete restrict on update restrict;
 
 alter table TIPO_INSUMO add constraint FK_RELATIONSHIP_3 foreign key (ID_INSUMO)

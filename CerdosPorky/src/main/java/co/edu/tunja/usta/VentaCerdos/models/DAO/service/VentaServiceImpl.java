@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.tunja.usta.VentaCerdos.entity.*;
+import co.edu.tunja.usta.VentaCerdos.models.DAO.IVenta;
 /** 
  * @Desc esta clase implementa el crud de la interface ILibrosService .
  * @CreateAt 23/11/2019
@@ -18,7 +19,7 @@ import co.edu.tunja.usta.VentaCerdos.entity.*;
  *         Ericka Julieth Sora         
 **/
 @Service
-public class PrestamoServiceImpl implements IVentaService{
+public class VentaServiceImpl implements IVentaService{
  
 	/** 
 	    *  @Autowired es buscar un objeto manejado (beans) que implementen determinada interfaz para hacer 
@@ -26,7 +27,7 @@ public class PrestamoServiceImpl implements IVentaService{
 	    *  se necesite la funcionalidad de determinada clase     
     **/
 	@Autowired
-	private IPrestamo prestamoDAO;
+	private IVenta ventaDAO;
 	
 	/** 
 	 * @Desc el metodo findAll trae una lista de todos los prestamos, es propio de la interfaz
@@ -39,7 +40,7 @@ public class PrestamoServiceImpl implements IVentaService{
 	@Override
 	public List<Venta> findAll() {
 		// TODO Auto-generated method stub
-		return (List<Venta>) prestamoDAO.findAll();
+		return (List<Venta>) ventaDAO.findAll();
 	}
     /** 
 	 * @Desc el metodo save guarda todos los prestamos que se creen, es propio de la interfaz
@@ -49,8 +50,8 @@ public class PrestamoServiceImpl implements IVentaService{
 
     @Transactional
 	@Override
-	public void Save(Venta prestamo) {
-		prestamoDAO.save(prestamo);
+	public void Save(Venta venta) {
+		ventaDAO.save(venta);
 	}
     /** 
    	 * @Desc el metodo findOne trae los datos de un prestamo, por medio del id del prestamo, es propio de la interfaz
@@ -63,7 +64,7 @@ public class PrestamoServiceImpl implements IVentaService{
     @Transactional(readOnly = true)
 	@Override
 	public Venta findOne(Long id) {
-		return prestamoDAO.findById(id).orElse(null);
+		return ventaDAO.findById(id).orElse(null);
 	}
 
     /** 
@@ -75,8 +76,8 @@ public class PrestamoServiceImpl implements IVentaService{
 
     @Transactional
 	@Override
-	public void delete(Venta prestamo) {
-		prestamoDAO.delete(prestamo);
+	public void delete(Venta venta) {
+		ventaDAO.delete(venta);
 	}
 
 }

@@ -29,7 +29,7 @@ public class CerdoController {
 	@Autowired
 	private ICerdoService cerdoService;
 	/** 
-	 * @Desc Este metodo permite listar todos los libros que se encuentren en la base de datos con 
+	 * @Desc Este metodo permite listar todos los Cerdos que se encuentren en la base de datos con 
 	 * sus respectivos atributos.
 	 * @param model
 	 * @GetMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.GET).
@@ -39,12 +39,12 @@ public class CerdoController {
 	
 	@GetMapping({"/listarCerdo","","/"})
 	public String listar(Model model) {
-		model.addAttribute("cerdo", "Listado de Libros");
+		model.addAttribute("cerdo", "Listado de Cerdos");
 		model.addAttribute("cerdo", cerdoService.findAll());
-		//crear libro
+		//crear cerdo
 		Cerdo cerdo =new Cerdo();
 		model.addAttribute("cerdo", cerdo);
-		return "listarLibro";
+		return "listarCerdo";
 	}
 	
 	/** 
@@ -80,25 +80,25 @@ public class CerdoController {
 	 * anotación se utiliza para asignar solicitudes web a clases de manejador y / o métodos de manejador específicos.
 	**/
 	
-	@RequestMapping("/eliminarLibro/{id}")
+	@RequestMapping("/eliminarCerdo/{id}")
 	public String eliminar(@PathVariable(value = "id" )Long id) {
 		if(id>0) {
 			cerdoService.delete(cerdoService.findOne(id));
 		}
-		return "redirect:/listarLibro";
+		return "redirect:/listarCerdo";
 	}
 	
 	/** 
-	 * @Desc Este metodo permite guardar todos los libros que se crean, y se guardan en la base de datos
+	 * @Desc Este metodo permite guardar todos los Cerdos que se crean, y se guardan en la base de datos
 	 * @param libro
 	 * @PostMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.POST).
 	 **/
 	
 	
-	@PostMapping("/listarLibro")
-	public String gurdar(Cerdo libro) {
-		cerdoService.Save(libro);
-		return "redirect:/listarLibro";
+	@PostMapping("/listarCerdo")
+	public String gurdar(Cerdo cerdo) {
+		cerdoService.Save(cerdo);
+		return "redirect:/listarCerdo";
 		
 	}
 }

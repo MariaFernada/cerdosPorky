@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * 		 de los errores generados como el 403, y 404.
  * @CreateAt 29/09/2019
  * @version 1.0
- * @author alejandrovela
+ * @author Maria Fernanda
  * @required SpringMVC
 **/
 @Configuration
@@ -25,7 +25,7 @@ public class MvcValid implements WebMvcConfigurer {
 	 * 			   el tipo de error producido. 
 	 * @CreateAt 29/09/2019
 	 * @version 1.0
-	 * @author alejandrovela
+	 * @author Maria fernanda 
 	 * @required SpringMVC
 	**/
 	public void addViewControllers(ViewControllerRegistry registry) {
