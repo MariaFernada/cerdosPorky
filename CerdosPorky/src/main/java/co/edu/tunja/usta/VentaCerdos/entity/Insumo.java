@@ -50,12 +50,32 @@ public class Insumo implements Serializable {
 	@NotBlank
 	private long cantidad_stock;
 
-	public Long getId_persona() {
-		return id_persona;
+	@Column(name="valor")
+	@NotBlank
+	private long valor;
+	
+	public Long getId_insumo() {
+		return id_insumo;
+	}
+	
+	public void setId_insumo(Long id_insumo) {
+		this.id_insumo = id_insumo;
 	}
 
-	public void setd_persona(Long id_persona) {
-		this.id_persona = id_persona;
+	public Long getId_proveedor() {
+		return id_proveedor;		
+	}
+	
+	
+	public void setId_cerdo(Long id_cerdo) {
+		this.id_cerdo = id_cerdo;
+	}
+
+	public Long getId_cerdo() {
+		return id_cerdo;		
+	}
+	public void setId_proveedor(Long id_proveedor) {
+		this.id_proveedor = id_proveedor;
 	}
 
 	public String getNombres() {
