@@ -5,6 +5,7 @@ create table CERDO
    PESO                 numeric(8,0),
    RAZA                 char(20),
    EDAD                 int,
+   id_insumo            int,
    primary key (ID_CERDO)
 );
 

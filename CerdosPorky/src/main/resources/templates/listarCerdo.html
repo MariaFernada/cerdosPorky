@@ -59,11 +59,14 @@
 				th:object="${cerdo}" method="post">
 
 				<div class="form-group">
-					<input type="text" th:field="*{raza}" placeholder="Nuevo raza"
-						class="form-control ml-5"  required/> 
-						<input type="number"
+				
+				<input type="number"
 						th:field="*{peso}" placeholder="peso
 						" class="form-control m-1" required/> 
+						
+					<input type="text" th:field="*{raza}" placeholder="Nuevo raza"
+						class="form-control ml-5"  required/> 
+						
 						
 						<input
 						type="number" th:field="*{edad}" placeholder="Edad"
