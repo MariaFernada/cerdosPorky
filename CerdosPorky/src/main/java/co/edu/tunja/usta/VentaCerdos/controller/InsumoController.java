@@ -17,9 +17,8 @@ import co.edu.tunja.usta.VentaCerdos.models.DAO.service.IInsumoService;
  * 			desde la Interfaz del Servicio a la vista html
  * @CreateAt 23/11/2019
  * @version 1.0
- * @author Laura Fernanda Castillo
- *         Maria Fernanda Molina
- *         Ericka Julieth Sora         
+ * @author *         Maria Fernanda Molina
+ *             
  * @required Interfaz Service
 **/
 

@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.edu.tunja.usta.VentaCerdos.entity.Persona;
+import co.edu.tunja.usta.VentaCerdos.entity.TipoPersona;
 import co.edu.tunja.usta.VentaCerdos.models.DAO.IPersona;
+import co.edu.tunja.usta.VentaCerdos.models.DAO.ITipoPersona;
 /** 
  * @Desc esta clase implementa el crud de la interface ILibrosService .
  * @CreateAt 23/11/2019
@@ -17,7 +18,7 @@ import co.edu.tunja.usta.VentaCerdos.models.DAO.IPersona;
  *         Ericka Julieth Sora         
 **/
 @Service
-public class TipoPersonaServiceImpl implements IPersonaService{
+public class TipoPersonaServiceImpl implements ITipoPersonaService{
 
 	/** 
 	    *  @Autowired es buscar un objeto manejado (beans) que implementen determinada interfaz para hacer 
@@ -25,7 +26,7 @@ public class TipoPersonaServiceImpl implements IPersonaService{
 	    *  se necesite la funcionalidad de determinada clase     
     **/
 	@Autowired
-	private IPersona personaDAO;
+	private ITipoPersona tipoPersonaDAO;
 	
 
 	/** 
@@ -37,9 +38,9 @@ public class TipoPersonaServiceImpl implements IPersonaService{
 	**/
 	@Transactional(readOnly = true)
 	@Override
-	public List<Persona> findAll() {
+	public List<TipoPersona> findAll() {
 		// TODO Auto-generated method stub
-		return (List<Persona>) personaDAO.findAll();
+		return (List<TipoPersona>) tipoPersonaDAO.findAll();
 	}
 
 	/** 
@@ -50,8 +51,8 @@ public class TipoPersonaServiceImpl implements IPersonaService{
 	**/
 	@Transactional
 	@Override
-	public void Save(Persona persona) {
-		personaDAO.save(persona);
+	public void Save(TipoPersona tipoPersona) {
+		tipoPersonaDAO.save(tipoPersona);
 		
 	}
 	 /** 
@@ -65,9 +66,9 @@ public class TipoPersonaServiceImpl implements IPersonaService{
 
 	@Transactional(readOnly = true)
 	@Override
-	public Persona findOne(Long id) {
+	public TipoPersona findOne(Long id) {
 		// TODO Auto-generated method stub
-		return personaDAO.findById(id).orElse(null);
+		return tipoPersonaDAO.findById(id).orElse(null);
 	}
 	
 	/** 
@@ -78,8 +79,8 @@ public class TipoPersonaServiceImpl implements IPersonaService{
 	**/
 	@Transactional
 	@Override
-	public void delete(Persona persona) {
-		personaDAO.delete(persona);
+	public void delete(TipoPersona tipoPersona) {
+		tipoPersonaDAO.delete(tipoPersona);
 	}
 
 }

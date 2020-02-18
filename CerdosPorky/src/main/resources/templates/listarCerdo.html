@@ -28,11 +28,16 @@
 					style="background-color: #e3f2fd;" alt="Responsive image">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item"><a class="nav-link"
-							href="listarPrestamo">Prestamos</a></li>
+							href="listarVenta">Venta</a></li>
 						<li class="nav-item"><a class="nav-link" href="listarPersona">Persona</a>
 						</li>
+						<li class="nav-item"><a class="nav-link" href="listarInsumo">Insumo</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="listarProveedor">Proveedor</a>
+						</li>
+					
 
-						<li class="nav-item active"><a class="nav-link" href="#">Libro
+						<li class="nav-item active"><a class="nav-link" href="#">Cerdo
 								<span class="sr-only">(current)</span>
 						</a></li>
 					</ul>
@@ -44,31 +49,32 @@
 	</header>
 	<div class="container">
 
-		<h1 class="text-center my-3">Biblioteca</h1>
+		<h1 class="text-center my-3">Cerdos</h1>
 
 		<hr class="border-secondary">
 		<div class='row mx-4'>
-			<h2 class="my-2">Crear Nuevo Libro</h2>
+			<h2 class="my-2">Crear Nuevo cerdo</h2>
 
-			<form class="form-inline"  th:action="@{/listarLibro}"
-				th:object="${libro}" method="post">
+			<form class="form-inline"  th:action="@{/listarCerdo}"
+				th:object="${cerdo}" method="post">
 
 				<div class="form-group">
-					<input type="text" th:field="*{titulo}" placeholder="Nuevo Titulo"
+					<input type="text" th:field="*{raza}" placeholder="Nuevo raza"
 						class="form-control ml-5"  required/> 
-						<input type="text"
-						th:field="*{autor}" placeholder="Autor" class="form-control m-1" required/> 
+						<input type="number"
+						th:field="*{peso}" placeholder="peso
+						" class="form-control m-1" required/> 
 						
 						<input
-						type="number" th:field="*{isbn}" placeholder="Nuevo Isbn"
+						type="number" th:field="*{edad}" placeholder="Edad"
 						class="form-control mr-1" required/> 
 						
-						<input type="text" th:field="*{genero}"
-						placeholder="Genero" class="form-control mr-1" required/>
+						<input type="text" th:field="*{id_insumo}"
+						placeholder="Id Insumo" class="form-control mr-1" required/>
 
 
 
-					<input type="hidden" th:field="*{idLibro}" /> 
+					<input type="hidden" th:field="*{id_cerdo}" /> 
 					<button type="submit"
 						 class="btn btn-success ml-1" >
 						<i class ="fas fa-plus "></i> Guardar
@@ -84,32 +90,32 @@
 
 		<div class='row mx-2 my-2'>
 			<div class="col-12 my-2 ">
-				<h2>Información del Libro</h2>
+				<h2>Información del Cerdo</h2>
 
 
 				<table id="infoTable" class="table table-bordered mt-3 text-center" >
 					<thead style ="background-color: #bccad6;">
 						<tr>
-							<th>id Libro</th>
-							<th>Titulo</th>
-							<th>Autor</th>
-							<th>Isbn</th>
-							<th>Genero</th>
+							<th>id Cerdo</th>
+							<th>Edad</th>
+							<th>Id Insumo</th>
+							<th>Peso</th>
+							<th>Raza</th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="libro: ${libros}">
-							<td th:text="${libro.idLibro}"></td>
-							<td th:text="${libro.titulo}"></td>
-							<td th:text="${libro.autor}"></td>
-							<td th:text="${libro.isbn}"></td>
-							<td th:text="${libro.genero}"></td>
+						<tr th:each="Cerdo: ${cerdos}">
+							<td th:text="${cerdo.id_cerdo}"></td>
+							<td th:text="${cerdo.edad}"></td>
+							<td th:text="${cerdo.id_insumo}"></td>
+							<td th:text="${cerdo.peso}"></td>
+							<td th:text="${cerdo.raza}"></td>
 							<td><a class="btn btn-primary m-1"
-								th:href="@{/listarLibro/} + ${libro.idLibro}">
+								th:href="@{/listarCerdo/} + ${cerdo.id_cerdo}">
 								<i class="fas fa-edit"></i></a>
 							<a class="btn btn-danger m-1"
-								th:href="@{/eliminarLibro/} + ${libro.idLibro}"
+								th:href="@{/eliminarCerdo/} + ${cerdo.id_cerdo}"
 								onclick="return confirm('Desea Eliminar el Libro?');">
 								<i class="fas fa-trash-alt"></i></a></td>
 						</tr>

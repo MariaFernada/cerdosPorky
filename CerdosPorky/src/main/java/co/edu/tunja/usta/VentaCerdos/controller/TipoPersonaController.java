@@ -33,14 +33,14 @@ private ITipoPersonaService tipoPersonaService;
  * @param model
  * @GetMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.GET).
 **/
-@GetMapping("/listarPersona")
+@GetMapping("/listarTipoPersona")
 public String listar(Model model) {
 	model.addAttribute("titulo", "Listado de Personas");
 	model.addAttribute("personas", tipoPersonaService.findAll());
 	//crear persona
 	TipoPersona tipoPersona = new TipoPersona();
 	model.addAttribute("tipoPersona", tipoPersona);
-	return "listarPersona";
+	return "listarTipoPersona";
 	}
 /** 
  * @Desc Este metodo permite editar los datos de una persona que se encuentra registrada
@@ -51,17 +51,17 @@ public String listar(Model model) {
  * estar vinculado a una variable de plantilla URI.
 **/
 
-@GetMapping("/listarPersona/{id_tipo_persona}")
-public String editar(@PathVariable(value = "id_tipo_personao") Long id_tipo_persona, Model model) {
+@GetMapping("/listarTipoPersona/{id_tipo_persona}")
+public String editar(@PathVariable(value = "id_tipo_persona") Long id_tipo_persona, Model model) {
 	TipoPersona tipoPersona = null;
 	if(id_tipo_persona>0) {
 		tipoPersona=tipoPersonaService.findOne(id_tipo_persona);
 	}else {
-		return "redirect:/listarPersona";
+		return "redirect:/listarTipoPersona";
 	}
 	model.addAttribute("tipoPersona", tipoPersona);
 	model.addAttribute("titulo", "Editar Persona");
-	return "listarPersona";
+	return "listarTipoPersona";
 	
 }
 
@@ -76,7 +76,7 @@ public String editar(@PathVariable(value = "id_tipo_personao") Long id_tipo_pers
  * anotación se utiliza para asignar solicitudes web a clases de manejador y / o métodos de manejador específicos.
 **/
 
-@RequestMapping("/eliminarPersona/{id_tipo_persona}")
+@RequestMapping("/eliminarTipoPersona/{id_tipo_persona}")
 public String eliminar(@PathVariable(value = "id_tipo_persona" )Long id_tipo_persona) {
 	if(id_tipo_persona>0) {
 		tipoPersonaService.delete(tipoPersonaService.findOne(id_tipo_persona));
@@ -89,7 +89,7 @@ public String eliminar(@PathVariable(value = "id_tipo_persona" )Long id_tipo_per
  * @param persona
  * @PostMappinges una anotación compuesta que actúa como un atajo para @RequestMapping(method = RequestMethod.POST).
  **/
-@PostMapping("/listarPersona")
+@PostMapping("/listarTipoPersona")
 public String gurdar(TipoPersona tipoPersona) {
 	tipoPersonaService.Save(tipoPersona);
 	return "redirect:/listarPersona";
