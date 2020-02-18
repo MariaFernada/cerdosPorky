@@ -54,7 +54,7 @@ public class Persona implements Serializable {
 		return id_persona;
 	}
 
-	public void setd_persona(Long id_persona) {
+	public void setId_persona(Long id_persona) {
 		this.id_persona = id_persona;
 	}
 
